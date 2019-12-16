@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
 class ContactPage extends React.Component {
 
     render() {
@@ -13,13 +14,25 @@ class ContactPage extends React.Component {
                 <input type="submit" />
 
                 <button onClick={() => {
-                    this.props.changePage("list")
-                }}>Go to list page</button>
-
+                    this.props.dispatch({ type: "ADD_MOVIE", data: { id: 99, title: "Test", category: "Test category", image: 'http://lorempixel.com/640/360' } })
+                }}>
+                    ADD MOVIE
+                </button>
             </div>
         )
     }
 
 }
 
-export default ContactPage
+let mapStateToProps = (state) => {
+    return {}
+}
+
+let dispatchToProps = (dispatch) => {
+    return {
+        dispatch: dispatch
+    }
+}
+
+
+export default connect(mapStateToProps, dispatchToProps)(ContactPage)
