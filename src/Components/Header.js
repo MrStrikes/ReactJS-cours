@@ -1,11 +1,9 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
 class Header extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
+    
 
     render() {
         return (
@@ -15,7 +13,7 @@ class Header extends React.Component {
                     className={`${this.props.currentPage === "home" && 'active'}`}
                 
                     onClick={() => {
-                        this.props.changePage("home")
+                        this.props.dispatch({ type: 'CHANGE_CURRENTPAGE', data: { currentPage: "home" } })
                     }}
                 > Accueil </span> 
 
@@ -23,7 +21,7 @@ class Header extends React.Component {
                     className={`${this.props.currentPage === "list" && 'active'}`}
                 
                     onClick={() => {
-                        this.props.changePage("list")
+                        this.props.dispatch({ type: 'CHANGE_CURRENTPAGE', data: { currentPage: "list" } })
                     }}
                 > Listing </span> 
 
@@ -31,7 +29,7 @@ class Header extends React.Component {
                     className={`${this.props.currentPage === "contact" && 'active'}`}
                 
                     onClick={() => {
-                        this.props.changePage("contact")
+                        this.props.dispatch({ type: 'CHANGE_CURRENTPAGE', data: { currentPage: "contact" } })
                     }}
                 > Contact </span>
 
@@ -41,4 +39,16 @@ class Header extends React.Component {
 
 }
 
-export default Header;
+let mapStateToProps = (state) => {
+    return {
+        currentPage: state.currentPage
+    }
+}
+
+let dispatchToProps = (dispatch) => {
+    return {
+        dispatch: dispatch
+    }
+}
+
+export default connect(mapStateToProps, dispatchToProps)(Header);
