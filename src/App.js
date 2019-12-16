@@ -1,26 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
+
+import Header from './Components/Header'
+
+import HomePage from './Components/HomePage'
+import ListPage from './Components/ListPage'
+import ContactPage from './Components/ContactPage'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            currentPage: "home"
+        }
+
+    }
+
+  render() {
+    return (
+        <div className="App">
+            
+            <Header 
+                currentPage={this.state.currentPage} 
+                changePage={(page) => {
+                    this.setState({currentPage: page})
+                }} >
+
+            </Header>
+
+            {this.state.currentPage === "home" && <HomePage/>}
+            {this.state.currentPage === "list" && <ListPage/>}
+            {this.state.currentPage === "contact" && <ContactPage 
+                changePage={(page) => {
+                    this.setState({currentPage: page})
+                }} 
+            />}
+
+        </div>
+    );
+  }
+
 }
 
 export default App;

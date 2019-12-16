@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,13 @@
   color: white;
 }
 
-.App-link {
+.App-header > span {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.App-header > span.active {
   color: #61dafb;
 }
 
