@@ -54,7 +54,7 @@ class App extends React.Component {
 
                     <Route exact path="/" >
 
-                        <PrivatePage roles={[]} >
+                        <PrivatePage roles={["*"]} >
                             <HomePage />
                         </PrivatePage>
                         

@@ -13,7 +13,7 @@ class PrivatePage extends React.Component {
             return (
                 <Redirect to="/"></Redirect>
             )
-        } else if (!this.props.roles.includes(this.props.user_role)) {
+        } else if (!this.props.roles.includes(this.props.user_role) && !this.props.roles.includes("*")) {
             // alert("Tu n'a pas le bon role")
             return (
                 <Redirect to="/"></Redirect>
