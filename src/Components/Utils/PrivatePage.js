@@ -11,7 +11,7 @@ class PrivatePage extends React.Component {
         if (!this.props.user_is_logged) {
             // alert("Tu n'es pas connecté")
             return (
-                <Redirect to="/"></Redirect>
+                <Redirect to="/login"></Redirect>
             )
         } else if (!this.props.roles.includes(this.props.user_role) && !this.props.roles.includes("*")) {
             // alert("Tu n'a pas le bon role")

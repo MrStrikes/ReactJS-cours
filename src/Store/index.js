@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 import Movies from '../Movies'
 
 const initState = {
-    user_is_logged: true,
+    user_is_logged: false,
     user_role: 1,
     movies: Movies
 }
