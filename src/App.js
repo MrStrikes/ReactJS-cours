@@ -4,12 +4,15 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Redirect
 } from "react-router-dom";
+
+import { connect } from 'react-redux'
 
 import Header from './Components/Header'
 
 import HomePage from './Components/HomePage'
+import LoginPage from './Components/LoginPage'
 import ListPage from './Components/ListPage'
 import ContactPage from './Components/ContactPage'
 
@@ -25,16 +28,14 @@ class App extends React.Component {
         <Router>
             <div className="App">
                 
-    
+                <Header/>
+
                 <Switch>
 
                     <Route path="/contact">
 
                         <PrivatePage roles={[1]} >
-                            <div>
-                                <Header/>
-                                <ContactPage />
-                            </div>
+                            <ContactPage />
                         </PrivatePage>
                         
                     </Route>
@@ -42,26 +43,19 @@ class App extends React.Component {
                     <Route path="/list">
 
                         <PrivatePage roles={[1, 2]} >
-                            <div>
-                                <Header/>
-                                <ListPage />
-                            </div>
-
+                            <ListPage />
                         </PrivatePage>
 
                     </Route>
 
                     <Route exact path="/login" >
-                        <div>
-                            <HomePage />
-                        </div>
+                        { this.props.user_is_logged ? <Redirect to="/" /> : <LoginPage /> }
                     </Route>
 
                     <Route exact path="/" >
-                        <div>
-                            <Header/>
+                        <PrivatePage roles={[]} >
                             <HomePage />
-                        </div>
+                        </PrivatePage>
                     </Route>
 
                 </Switch>
@@ -74,12 +68,10 @@ class App extends React.Component {
 
 }
 
-export default App;
+let mapStateToProps = (state) => {
+    return {
+        user_is_logged: state.user_is_logged
+    }
+}
 
-// let mapStateToProps = (state) => {
-//     return {
-        
-//     }
-// }
-
-// export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App);
