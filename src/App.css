@@ -24,15 +24,23 @@
   color: white;
 }
 
-.App-header > span {
+.App-header > a {
   margin-top: 30px;
   margin-bottom: 30px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.App-header > span.active {
-  color: #61dafb;
+.App-header > a:visited {
+  color: white;
+  text-decoration: none;
 }
+
+
+.App-header > a.active {
+  color: #61dafb!important;
+}
+
 
 @keyframes App-logo-spin {
   from {

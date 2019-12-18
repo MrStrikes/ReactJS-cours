@@ -3,7 +3,8 @@ import { createStore } from 'redux'
 import Movies from '../Movies'
 
 const initState = {
-    currentPage: "home",
+    user_is_logged: true,
+    user_role: 1,
     movies: Movies
 }
 
@@ -30,8 +31,20 @@ const reducer = (state = initState, action) => {
             movies: state.movies
         }
 
-    } else if (action.type === 'REMOVE_FIRST_MOVIE') { 
-        
+    } else if (action.type === 'LOGIN_USER') {
+
+        return {
+            ...state,
+            user_is_logged: true
+        }
+
+    } else if (action.type === 'LOGOUT_USER') {
+
+        return {
+            ...state,
+            user_is_logged: false
+        }
+
     }
 
     return state

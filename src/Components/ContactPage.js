@@ -1,12 +1,13 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+
 class ContactPage extends React.Component {
 
     render() {
+
         return (
             <div>
-
                 <input type="text"/> <br/>
                 <input type="text"/> <br/>
                 <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -14,7 +15,7 @@ class ContactPage extends React.Component {
                 <input type="submit" />
 
                 <button onClick={() => {
-                    this.props.dispatch({ type: "ADD_MOVIE", data: { id: 99, title: "Test", category: "Test category", image: 'http://lorempixel.com/640/360' } })
+                    this.props.dispatch({ type: "GET_MOVIES" })
                 }}>
                     ADD MOVIE
                 </button>
@@ -33,6 +34,5 @@ let dispatchToProps = (dispatch) => {
         dispatch: dispatch
     }
 }
-
 
 export default connect(mapStateToProps, dispatchToProps)(ContactPage)
